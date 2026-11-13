@@ -53,7 +53,10 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver, AfterN
         configureHeaderAvatar();
         refreshHeaderAvatar(AuthSession.currentUser().orElse(null));
 
-        HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), brandTitle, headerAvatar);
+        DrawerToggle drawerToggle = new DrawerToggle();
+        drawerToggle.setAriaLabel("Buka menu navigasi");
+
+        HorizontalLayout header = new HorizontalLayout(drawerToggle, brandTitle, headerAvatar);
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         header.expand(brandTitle);
         header.setWidthFull();
@@ -121,6 +124,9 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver, AfterN
                 .set("height", "40px")
                 .set("flex-shrink", "0");
         headerAvatar.getElement().setAttribute("title", "Menu akun");
+        headerAvatar.getElement().setAttribute("role", "button");
+        headerAvatar.getElement().setAttribute("tabindex", "0");
+        headerAvatar.getElement().setAttribute("aria-label", "Menu akun");
 
         ContextMenu accountMenu = new ContextMenu(headerAvatar);
         accountMenu.setOpenOnClick(true);

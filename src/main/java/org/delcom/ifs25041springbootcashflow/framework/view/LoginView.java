@@ -5,8 +5,8 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
@@ -109,7 +109,7 @@ public class LoginView extends VerticalLayout {
         username.getStyle().set("margin", "0");
         password.getStyle().set("margin", "0");
 
-        Div card = new Div(form);
+        Main card = new Main(form);
         card.getStyle()
                 .set("width", "100%")
                 .set("max-width", "420px")
@@ -124,7 +124,7 @@ public class LoginView extends VerticalLayout {
     }
 
     /**
-     * Memberi id pada elemen &lt;input&gt; di dalam komponen Vaadin (bukan pada host-nya).
+     * Memberi id pada elemen <input> di dalam komponen Vaadin (bukan pada host-nya).
      * Id otomatis dari Vaadin (mis. "input-vaadin-text-field-6") diganti dengan id yang kita mau,
      * dan atribut "for" pada label ikut disesuaikan supaya klik label tetap fokus ke input.
      */
