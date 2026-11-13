@@ -6,6 +6,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
@@ -152,7 +153,7 @@ public class ProfileView extends VerticalLayout {
         photoRow.setSpacing(true);
         photoRow.setWidthFull();
 
-        Div card = PageCard.wrap(
+        Main card = PageCard.wrap(
                 false,
                 title,
                 subtitle,
@@ -202,7 +203,7 @@ public class ProfileView extends VerticalLayout {
                 .set("flex-shrink", "0")
                 .set("background", "#EFF6FF");
 
-        photoPlaceholder.getStyle().set("color", "#6B7280");
+        photoPlaceholder.getStyle().set("color", "#4B5563");
     }
 
     private void refreshPhoto(User user) {

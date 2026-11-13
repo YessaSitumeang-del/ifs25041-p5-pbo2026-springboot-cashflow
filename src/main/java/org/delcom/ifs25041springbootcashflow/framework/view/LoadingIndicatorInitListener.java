@@ -6,13 +6,17 @@ import com.vaadin.flow.server.VaadinServiceInitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * Konfigurasi indikator loading global untuk tindakan yang memerlukan waktu tunggu.
+ * Konfigurasi indikator loading global dan atribut bahasa HTML.
  */
 @Component
 public class LoadingIndicatorInitListener implements VaadinServiceInitListener {
 
     @Override
     public void serviceInit(ServiceInitEvent event) {
+        event.addIndexHtmlRequestListener(response -> {
+            response.getDocument().attr("lang", "id");
+        });
+
         event.getSource().addUIInitListener(uiEvent -> {
             LoadingIndicatorConfiguration conf = uiEvent.getUI().getLoadingIndicatorConfiguration();
             conf.setApplyDefaultTheme(true);
@@ -22,4 +26,3 @@ public class LoadingIndicatorInitListener implements VaadinServiceInitListener {
         });
     }
 }
-

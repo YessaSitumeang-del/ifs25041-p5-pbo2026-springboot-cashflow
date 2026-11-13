@@ -4,8 +4,8 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -60,7 +60,7 @@ public class UsersView extends VerticalLayout implements BeforeEnterObserver {
         Paragraph subtitle = new Paragraph("Admin dapat melihat transaksi pengguna lain (hanya baca).");
         subtitle.getStyle().set("margin", "0").set("color", "#4B5563");
 
-        Div card = PageCard.wrap(title, subtitle, grid);
+        Main card = PageCard.wrap(title, subtitle, grid);
         add(card);
         expand(card);
     }

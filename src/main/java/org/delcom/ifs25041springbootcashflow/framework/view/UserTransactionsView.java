@@ -1,8 +1,8 @@
 package org.delcom.ifs25041springbootcashflow.framework.view;
 
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -75,7 +75,7 @@ public class UserTransactionsView extends VerticalLayout
         grid.setSizeFull();
         GridStyles.apply(grid);
 
-        Div card = PageCard.wrap(title, balanceLabel, empty, grid);
+        Main card = PageCard.wrap(title, balanceLabel, empty, grid);
         add(card);
         expand(card);
     }

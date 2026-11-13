@@ -1,22 +1,22 @@
 package org.delcom.ifs25041springbootcashflow.framework.view;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 /**
- * Card konten halaman agar tampilan konsisten.
+ * Card konten halaman agar tampilan konsisten dan memiliki landmark <main>.
  */
 final class PageCard {
 
     private PageCard() {
     }
 
-    static Div wrap(Component... content) {
+    static Main wrap(Component... content) {
         return wrap(true, content);
     }
 
-    static Div wrap(boolean fullHeight, Component... content) {
+    static Main wrap(boolean fullHeight, Component... content) {
         VerticalLayout body = new VerticalLayout(content);
         body.setPadding(false);
         body.setSpacing(true);
@@ -25,7 +25,7 @@ final class PageCard {
             body.setSizeFull();
         }
 
-        Div card = new Div(body);
+        Main card = new Main(body);
         card.setWidthFull();
         if (fullHeight) {
             card.setHeightFull();

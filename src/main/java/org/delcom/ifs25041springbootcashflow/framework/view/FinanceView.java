@@ -7,6 +7,7 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -79,7 +80,7 @@ public class FinanceView extends VerticalLayout {
         configureGrid();
         configureToolbar();
 
-        Div card = PageCard.wrap(title, buildSummaryCards(), buildToolbar(), statusLabel, grid);
+        Main card = PageCard.wrap(title, buildSummaryCards(), buildToolbar(), statusLabel, grid);
         add(card);
         expand(card);
         refreshAll();
@@ -94,9 +95,9 @@ public class FinanceView extends VerticalLayout {
     private HorizontalLayout buildSummaryCards() {
         HorizontalLayout summary = new HorizontalLayout(
                 createSummaryCard("Total Transaksi", totalCount, "#DBEAFE", "#1D4ED8", "#1E40AF"),
-                createSummaryCard("Total Pemasukan", incomeTotal, "#DCFCE7", "#16A34A", "#166534"),
-                createSummaryCard("Total Pengeluaran", expenseTotal, "#FEE2E2", "#DC2626", "#991B1B"),
-                createSummaryCard("Saldo", balanceTotal, "#FEF3C7", "#D97706", "#92400E")
+                createSummaryCard("Total Pemasukan", incomeTotal, "#DCFCE7", "#166534", "#14532D"),
+                createSummaryCard("Total Pengeluaran", expenseTotal, "#FEE2E2", "#991B1B", "#7F1D1D"),
+                createSummaryCard("Saldo", balanceTotal, "#FEF3C7", "#92400E", "#78350F")
         );
         summary.setWidthFull();
         summary.setSpacing(true);
@@ -115,7 +116,7 @@ public class FinanceView extends VerticalLayout {
         caption.getStyle()
                 .set("display", "block")
                 .set("font-size", "0.875rem")
-                .set("font-weight", "500")
+                .set("font-weight", "600")
                 .set("color", accent);
 
         value.getStyle()
@@ -246,10 +247,12 @@ public class FinanceView extends VerticalLayout {
     // ------------------------------------------------------------------ toolbar
 
     private void configureToolbar() {
+        searchField.setLabel("Cari Transaksi");
         searchField.setPlaceholder("Cari keterangan...");
         searchField.setPrefixComponent(VaadinIcon.SEARCH.create());
         searchField.setClearButtonVisible(true);
 
+        sortSelect.setLabel("Urutkan");
         sortSelect.setPlaceholder("Urutkan...");
         sortSelect.setEmptySelectionAllowed(true);
         sortSelect.setItems(SortOption.values());
