@@ -1,5 +1,6 @@
 package org.delcom.ifs25041springbootcashflow.framework.view;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -40,8 +41,10 @@ public class LoginView extends VerticalLayout {
 
         TextField username = new TextField("Username");
         PasswordField password = new PasswordField("Password");
-        username.setId("login-username");
-        password.setId("login-password");
+        // setId() pada TextField hanya memberi id ke elemen host <vaadin-text-field>.
+        // Untuk pengujian/otomasi, id harus ada di <input> aslinya.
+        setInputId(username, "login-username");
+        setInputId(password, "login-password");
         username.setWidthFull();
         password.setWidthFull();
         // Agar nilai sudah sampai server sebelum Enter memicu submit.
@@ -118,5 +121,25 @@ public class LoginView extends VerticalLayout {
                 .set("box-sizing", "border-box");
 
         add(card);
+    }
+
+    /**
+     * Memberi id pada elemen &lt;input&gt; di dalam komponen Vaadin (bukan pada host-nya).
+     * Id otomatis dari Vaadin (mis. "input-vaadin-text-field-6") diganti dengan id yang kita mau,
+     * dan atribut "for" pada label ikut disesuaikan supaya klik label tetap fokus ke input.
+     */
+    private static void setInputId(Component field, String id) {
+        field.getElement().executeJs(
+                "const host = this;"
+                        + "let tries = 0;"
+                        + "const apply = () => {"
+                        + "  const input = host.inputElement || host.querySelector('input');"
+                        + "  if (!input) { if (tries++ < 60) requestAnimationFrame(apply); return; }"
+                        + "  const label = host.querySelector('label[slot=label]');"
+                        + "  if (label) label.htmlFor = $0;"
+                        + "  input.id = $0;"
+                        + "};"
+                        + "apply();",
+                id);
     }
 }
