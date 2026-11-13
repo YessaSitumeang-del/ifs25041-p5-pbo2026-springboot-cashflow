@@ -45,6 +45,8 @@ public class LoginView extends VerticalLayout {
         // Untuk pengujian/otomasi, id harus ada di <input> aslinya.
         setInputId(username, "login-username");
         setInputId(password, "login-password");
+        username.setAutocomplete(com.vaadin.flow.component.textfield.Autocomplete.USERNAME);
+        password.setAutocomplete(com.vaadin.flow.component.textfield.Autocomplete.CURRENT_PASSWORD);
         username.setWidthFull();
         password.setWidthFull();
         // Agar nilai sudah sampai server sebelum Enter memicu submit.
@@ -92,7 +94,9 @@ public class LoginView extends VerticalLayout {
         registerLink.getStyle()
                 .set("align-self", "flex-end")
                 .set("text-align", "right")
-                .set("cursor", "pointer");
+                .set("cursor", "pointer")
+                .set("color", "#1D4ED8")
+                .set("text-decoration", "underline");
 
         VerticalLayout form = new VerticalLayout(
                 title,

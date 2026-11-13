@@ -4,8 +4,8 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
@@ -41,6 +41,9 @@ public class RegisterView extends VerticalLayout {
         TextField fullName = new TextField("Nama Lengkap");
         TextField username = new TextField("Username");
         PasswordField password = new PasswordField("Password");
+        fullName.setAutocomplete(com.vaadin.flow.component.textfield.Autocomplete.NAME);
+        username.setAutocomplete(com.vaadin.flow.component.textfield.Autocomplete.USERNAME);
+        password.setAutocomplete(com.vaadin.flow.component.textfield.Autocomplete.NEW_PASSWORD);
         fullName.setWidthFull();
         username.setWidthFull();
         password.setWidthFull();
@@ -90,7 +93,9 @@ public class RegisterView extends VerticalLayout {
         loginLink.getStyle()
                 .set("align-self", "flex-end")
                 .set("text-align", "right")
-                .set("cursor", "pointer");
+                .set("cursor", "pointer")
+                .set("color", "#1D4ED8")
+                .set("text-decoration", "underline");
 
         VerticalLayout form = new VerticalLayout(
                 title,
@@ -109,7 +114,7 @@ public class RegisterView extends VerticalLayout {
         username.getStyle().set("margin", "0");
         password.getStyle().set("margin", "0");
 
-        Div card = new Div(form);
+        Main card = new Main(form);
         card.getStyle()
                 .set("width", "100%")
                 .set("max-width", "420px")
